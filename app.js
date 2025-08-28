@@ -98,6 +98,11 @@ app.use("/demouser",async(req,res)=>{
  res.send(registeredUser);
 });
 
+// redirect root ("/") to "/listings"
+app.get("/", (req, res) => {
+  res.redirect("/listings");
+});
+
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
 app.use("/",userRouter);
