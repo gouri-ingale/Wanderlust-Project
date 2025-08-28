@@ -114,7 +114,7 @@ app.use("/",userRouter);
 //     await listing.save();
 //     res.send("Suuessful");
 // });
-app.all("*", (req, res, next) => {
+app.all("/*catchall", (req, res, next) => {
   console.log("404 triggered by URL:", req.url); // 👈 Add this
   next(new ExpressError(404, "Page Not Found!"));
 });
