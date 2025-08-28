@@ -66,11 +66,6 @@ async function main() {
   await mongoose.connect(dbUrl);
 }
 
-//creating the api
-// app.get("/", (req, res) => {
-//   res.send(" hi i am root");
-// });
-
 app.use(session(sesstionOptions));
 app.use(flash());
 
@@ -119,7 +114,7 @@ app.use("/",userRouter);
 //     await listing.save();
 //     res.send("Suuessful");
 // });
-app.all("/*catchall", (req, res, next) => {
+app.all("*", (req, res, next) => {
   console.log("404 triggered by URL:", req.url); // 👈 Add this
   next(new ExpressError(404, "Page Not Found!"));
 });
