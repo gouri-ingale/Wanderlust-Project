@@ -121,6 +121,7 @@ app.all("/*catchall", (req, res, next) => {
 
 app.use((err, req, res, next) => {
   let { statusCode = 500, message = "Something went wrong!" } = err;
+  console.error(err);
   //res.status(statusCode).send(message);
   res.status(statusCode).render("err.ejs", { message, statusCode });
 });
