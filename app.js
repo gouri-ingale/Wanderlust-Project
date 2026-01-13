@@ -29,7 +29,7 @@ const store = MongoStore.create({
   touchAfter : 24 * 3600,
 });
 
-store.on("error",()=>{
+store.on("error",(err)=>{
   console.log("ERROR IN MONGO SESSION STORE",err);
 });
 
@@ -83,15 +83,15 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use("/demouser",async(req,res)=>{  
-  let fakeUser = new User({
-    email : "student@gmail.com",
-    username : "delta-student",
-  });
+// app.use("/demouser",async(req,res)=>{  
+//   let fakeUser = new User({
+//     email : "student@gmail.com",
+//     username : "delta-student",
+//   });
 
- let registeredUser =  await User.register(fakeUser , "helloworld"); 
- res.send(registeredUser);
-});
+//  let registeredUser =  await User.register(fakeUser , "helloworld"); 
+//  res.send(registeredUser);
+// });
 
 // redirect root ("/") to "/listings"
 app.get("/", (req, res) => {
